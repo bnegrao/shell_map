@@ -22,4 +22,5 @@ for $username in `users keys`; do
 	echo "user $username, name: $name"
 done
 
-
+# contains: TODO
+# delete: TODO
