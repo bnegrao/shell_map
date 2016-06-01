@@ -18,7 +18,7 @@ Implementation of a Map in Shell Script
 	
 	# keys: return all keys 
 	for $username in `users keys`; do
-		name=`users get $key`
+		name=`users get $username`
 		echo "user $username, name: $name"
 	done
 	
