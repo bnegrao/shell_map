@@ -22,14 +22,20 @@ shell_map () {
     keys)
         declare | grep -Po "(?<=${FUNCNAME}_DATA_)\w+((?=\=))"
     ;;
-    contains)
-        echo TODO
-    ;;
-    delete)
-        echo TODO
-    ;;
     name)
         echo $FUNCNAME
+    ;;    
+    contains)
+        echo "TODO returns true if this map contains de given key"
+    ;;
+    delete)
+        echo "TODO removes the key from the map, releasing memory"
+    ;;
+    size)
+        echo "TODO returns the number of key-value pairs contained in this map"
+    ;;
+    put_increment)
+    	echo "TODO utility method to set a key and incrementing it's current value"
     ;;
     *)
         echo unsupported operation $1; exit 1
