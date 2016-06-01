@@ -22,5 +22,4 @@ Implementation of a Map in Shell Script
 		echo "user $username, name: $name"
 	done
 	
-	# contains: TODO
-	# delete: TODO
+	# TODO: more methods are comming soon 
