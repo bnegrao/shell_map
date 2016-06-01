@@ -22,7 +22,12 @@ shell_map () {
     keys)
         declare | grep -Po "(?<=${FUNCNAME}_DATA_)\w+((?=\=))"
     ;;
-
+    contains)
+        echo TODO
+    ;;
+    delete)
+        echo TODO
+    ;;
     name)
         echo $FUNCNAME
     ;;
