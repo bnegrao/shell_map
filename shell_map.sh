@@ -28,8 +28,11 @@ shell_map () {
     contains)
         echo "TODO returns true if this map contains de given key"
     ;;
+    clear)
+        echo "TODO clears all elements from this map"
+    ;;
     delete)
-        echo "TODO removes the key from the map, releasing memory"
+        echo "TODO removes the key from the map"
     ;;
     size)
         echo "TODO returns the number of key-value pairs contained in this map"
