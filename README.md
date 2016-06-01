@@ -13,8 +13,9 @@ Implementation of a Map in Shell Script
 	users put bnegrao "Bruno Negrao" 
 	users put msilva "Mariana Silva"
 	
-	# get: retrieves values from keys
-	users get jdavis # returns "John Davis"
+	# get: retrieves values from keys. 
+	# A key must be a string consisting solely of letters, numbers, and underscores.
+	users get jdavis      # returns "John Davis"
 	
 	# keys: return all keys 
 	for $username in `users keys`; do
