@@ -1,12 +1,12 @@
 # shell_map
 A Map implementation in bash. Tested with bash 3. It's like having a Map object in Shell.
 
-	# Usage
+	### Usage
 	
-	# importing shell_map.sh
+	### importing shell_map.sh
 	source shell_map.sh
 	
-	# instantiating a new shell_map with the name 'users'
+	### instantiating a new shell_map with the name 'users'
 	shell_map new users
 	
 	# storing key value pairs
