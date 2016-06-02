@@ -1,17 +1,24 @@
 #!/bin/bash
 
+die_ () {
+    echo "shell_map.sh: ERROR: $1" 1>&2
+    exit 1
+}
+
 shell_map () {
     case $1 in
     new)
-            # loads function declaration
+        # loads function declaration
         test -n "$(declare -f shell_map)" || return
-            # declares in the Global Scope a copy of this function with a new name.
+        # declares in the Global Scope a copy of this function with a new name.
         eval "${_/shell_map/$2}"
     ;;
     put)
-        local KEY=$2
+        local KEY="$2"
+        [ -z "$KEY" ] && die "put() KEY cannot be empty."
+        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && die "put() KEY names can be letters, digits and underscores."
         local VALUE="$3"
-            # declares a variable in the global scope
+        # declares a variable in the global scope
         eval ${FUNCNAME}_DATA_${KEY}='$VALUE'
     ;;
     get)
