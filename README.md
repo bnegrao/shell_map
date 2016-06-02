@@ -1,5 +1,5 @@
 # shell_map
-A Map implementation in bash. Tested with bash 3. It's like having a Map object in Shell.
+A full featured Map implementation in bash. Tested with bash 3. It's like OOO programming in Shell.
 ```
 # Usage
 
