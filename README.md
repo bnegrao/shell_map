@@ -15,7 +15,7 @@ users put bnegrao "Bruno Negrao"
 users put msilva "Mariana Silva"
 
 # test if a key exists
-users contains msilva || echo "msilva's name is `users get msilva`" 
+users contains msilva && echo "msilva's name is `users get msilva`" 
 
 # retrieving values from keys. 
 users get jdavis      # returns "John Davis"
