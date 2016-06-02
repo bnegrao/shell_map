@@ -3,23 +3,23 @@ A Map implementation in bash. Tested with bash 3. It's like having a Map object 
 
 ### Usage
 
-### importing shell_map.sh
+###### importing shell_map.sh
 `source shell_map.sh`
 
-### instantiating a new shell_map with the name 'users'
+###### instantiating a new shell_map with the name 'users'
 `shell_map new users`
 
-# storing key value pairs
+###### storing key value pairs
 ```
 users put jdavis "John Davis"
 users put bnegrao "Bruno Negrao" 
 users put msilva "Mariana Silva"
 ```
 
-# retrieving values from keys. 
+###### retrieving values from keys. 
 `users get jdavis      # returns "John Davis"`
 
-# iterating through all keys in 'users' shell_map 
+###### iterating through all keys in 'users' shell_map 
 ```
 for $username in `users keys`; do
 	name=`users get $username`
@@ -27,7 +27,7 @@ for $username in `users keys`; do
 done
 ```
 	
-Methods
+### Methods
 ```
 	new <name>: instantiates a new shell_map instance named as <name>
 	put <key> <value>: stores <value> associated with <key>. valid key name must be a string consisting solely of letters, numbers, and underscores.
