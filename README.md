@@ -17,7 +17,7 @@ users put msilva "Mariana Silva"
 # retrieving values from keys. 
 users get jdavis      # returns "John Davis"
 
-###### iterating through all keys in 'users' shell_map 
+# iterating through all keys in 'users' shell_map 
 for $username in `users keys`; do
 	name=`users get $username`
 	echo "user $username, name: $name"
