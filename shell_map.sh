@@ -16,7 +16,7 @@ shell_map () {
     put)
         local KEY="$2"
         [ -z "$KEY" ] && die "put() KEY cannot be empty."
-        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && die "put() KEY names can be letters, digits and underscores."
+        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && die_ "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."
         local VALUE="$3"
         # declares a variable in the global scope
         eval ${FUNCNAME}_DATA_${KEY}='$VALUE'
