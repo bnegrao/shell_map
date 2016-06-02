@@ -33,16 +33,21 @@ shell_map () {
         echo $FUNCNAME
     ;;
     contains)
-        echo "TODO returns true if this map contains de given key"
+        local KEY="$2"
+        [ -z "$KEY" ] && die "put() KEY cannot be empty."
+        compgen -v ${FUNCNAME}_DATA_${KEY} > /dev/null && true || false
     ;;
-    clear)
+    clear_all)
+        
         echo "TODO clears all elements from this map"
     ;;
     delete)
-        echo "TODO removes the key from the map"
+        local KEY="$2"
+        [ -z "$KEY" ] && die "put() KEY cannot be empty."
+        unset ${FUNCNAME}_DATA_${KEY}
     ;;
     size)
-        echo "TODO returns the number of key-value pairs contained in this map"
+        compgen -v ${FUNCNAME}_DATA_${KEY} | wc -l
     ;;
     put_increment)
         echo "TODO utility method to set a key and incrementing it's current value"
