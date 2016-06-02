@@ -28,6 +28,8 @@ map1 contains AADummy && die "contains() test failed. Key 'AADummy' should not e
 
 # Testing size()
 shell_map new map2
+[ `map2 size` == 0 ] || die "size() test failed. size should be 0." $LINENO
+
 map2 put 1 Joana
 map2 put 2 Carla
 map2 put 3 Fernando
@@ -39,7 +41,8 @@ keys="$(map2 keys)"
 
 # Testing delete()
 map2 delete 1
-[ `map2 size` == 2 ] || die "delete() failed. the map size should be 2, but was `map2 size`." $LINENO 
+map2 contains 1 && die "delete() test failed. the map should not contain key 1 at this point." $LINENO
+[ `map2 size` == 2 ] || die "delete() test failed. the map size should be 2, but was `map2 size`." $LINENO 
 
 exit 0
 
