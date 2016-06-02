@@ -1,26 +1,23 @@
 # shell_map
 A Map implementation in bash. Tested with bash 3. It's like having a Map object in Shell.
-
-### Usage
-
-###### importing shell_map.sh
-`source shell_map.sh`
-
-###### instantiating a new shell_map with the name 'users'
-`shell_map new users`
-
-###### storing key value pairs
 ```
+# Usage
+
+# importing shell_map.sh
+source shell_map.sh
+
+# instantiating a new shell_map with the name 'users'
+shell_map new users
+
+# storing key value pairs
 users put jdavis "John Davis"
 users put bnegrao "Bruno Negrao" 
 users put msilva "Mariana Silva"
-```
 
-###### retrieving values from keys. 
-`users get jdavis      # returns "John Davis"`
+# retrieving values from keys. 
+users get jdavis      # returns "John Davis"
 
 ###### iterating through all keys in 'users' shell_map 
-```
 for $username in `users keys`; do
 	name=`users get $username`
 	echo "user $username, name: $name"
