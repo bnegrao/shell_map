@@ -30,11 +30,11 @@ done
 - `new <name>`: instantiates a new shell_map instance named as <name>
 	
 #### Methods
-- `contains <key>`: returns true if the <key> exists in the map, returns false otherwise. (see also: man true)
+- `contains <key>`: returns true if the `<key>` exists in the map, returns false otherwise. (see also: man true)
 - `delete <key>`: deletes a key from the map. 
-- `get <key>`: retrieves the value associated with <key>
+- `get <key>`: retrieves the value associated with `<key>`
 - `keys`: retrieves a list of key names, separated by new line characters.
-- `put <key> <value>`: stores <value> associated with <key>. valid key name must be a string consisting solely of letters, numbers, and underscores.
-- `put_increment <key> <value>`: convenience method that stores a numeric <value> incrementing the existing number.
+- `put <key> <value>`: stores `<value>` associated with `<key>`. valid key name must be a string consisting solely of letters, numbers, and underscores.
+- `put_increment <key> <value>`: convenience method that stores a numeric `<value>` incrementing the existing number.
 - `size`: return the number of keys contained in the map
 
