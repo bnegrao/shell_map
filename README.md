@@ -30,7 +30,7 @@ done
 - `new <name>`: instantiates a new shell_map instance named as <name>
 	
 #### Methods
-- `contains <key>`: returns true if the `<key>` exists in the map, returns false otherwise. (see also: man true)
+- `contains <key>`: returns true if the `<key>` exists in the map, returns false otherwise. 
 - `delete <key>`: deletes a key from the map. 
 - `get <key>`: retrieves the value associated with `<key>`
 - `keys`: retrieves a list of key names, separated by new line characters.
