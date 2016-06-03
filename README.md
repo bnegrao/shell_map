@@ -26,14 +26,15 @@ for $username in `users keys`; do
 	echo "user $username, name: $name"
 done
 ```
+#### Constructor
+- `new <name>`: instantiates a new shell_map instance named as <name>
 	
-### Methods
-```
-	new <name>: instantiates a new shell_map instance named as <name>
-	put <key> <value>: stores <value> associated with <key>. valid key name must be a string consisting solely of letters, numbers, and underscores.
-	get <key>: retrieves the value associated with <key>
-	keys: retrieves a list of key names, separated by new line characters.
-	size: return the number of keys contained in the map
-	contains <key>: returns true if the <key> exists in the map, returns false otherwise. (see also: man true)
-	delete <key>: deletes a key from the map. 
-```
+#### Methods
+- `contains <key>`: returns true if the <key> exists in the map, returns false otherwise. (see also: man true)
+- `delete <key>`: deletes a key from the map. 
+- `get <key>`: retrieves the value associated with <key>
+- `keys`: retrieves a list of key names, separated by new line characters.
+- `put <key> <value>`: stores <value> associated with <key>. valid key name must be a string consisting solely of letters, numbers, and underscores.
+- `put_increment <key> <value>`: convenience method that stores a numeric <value> incrementing the existing number.
+- `size`: return the number of keys contained in the map
+
