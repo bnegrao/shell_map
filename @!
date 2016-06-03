@@ -49,11 +49,9 @@ shell_map new word_count
 word_count put_increment hello 1
 word_count put_increment hello 1
 word_count put_increment hello 1
+word_count get hello
 [ `word_count get hello` == 3 ] || die "put_increment test failed. key 'hello' should have value '3'." $LINENO
 
-word_count put_increment hello asdf 2>/dev/null && die "put_increment should return error for a value that is not numeric." $LINENO
-
-echo All tests were successful 
 
 exit 0
 

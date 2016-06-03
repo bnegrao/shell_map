@@ -1,8 +1,8 @@
 #!/bin/bash
 
-die_ () {
+croak () {
     echo "shell_map.sh: ERROR: $1" 1>&2
-    exit 1
+    return 1
 }
 
 shell_map () {
@@ -15,8 +15,8 @@ shell_map () {
     ;;
     put)
         local KEY="$2"
-        [ -z "$KEY" ] && die "put() KEY cannot be empty."
-        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && die_ "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."
+        [ -z "$KEY" ] && return `croak "put() KEY cannot be empty."`
+        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && return `croak "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."`
         local VALUE="$3"
         # declares a variable in the global scope
         eval ${FUNCNAME}_DATA_${KEY}='$VALUE'
@@ -34,25 +34,40 @@ shell_map () {
     ;;
     contains)
         local KEY="$2"
-        [ -z "$KEY" ] && die "put() KEY cannot be empty."
-        compgen -v ${FUNCNAME}_DATA_${KEY} > /dev/null && true || false
+        [ -z "$KEY" ] && return `croak "put() KEY cannot be empty."`
+        compgen -v ${FUNCNAME}_DATA_${KEY} > /dev/null && return 0 || return 1
     ;;
     clear_all)
-        
+
         echo "TODO clears all elements from this map"
     ;;
     delete)
         local KEY="$2"
-        [ -z "$KEY" ] && die "put() KEY cannot be empty."
+        [ -z "$KEY" ] && return `croak "put() KEY cannot be empty."`
         unset ${FUNCNAME}_DATA_${KEY}
     ;;
     size)
         compgen -v ${FUNCNAME}_DATA_${KEY} | wc -l
     ;;
     put_increment)
-        echo "TODO utility method to set a key and incrementing it's current value"
+        local KEY="$2"
+        [ -z "$KEY" ] && return `croak "put_increment() KEY cannot be empty."`
+        local NUMBER="$3"
+        [ -z "$NUMBER" ] && return `croak "put_increment() NUMBER cannot be empty."`
+        echo $NUMBER | grep -qPo '[^0-9]' && return `croak "pub_increment() NUMBER '$NUMBER' must be digits."`
+
+        if `$FUNCNAME contains $KEY`; then
+            local TOTAL=`$FUNCNAME get $KEY`
+            TOTAL=`expr $TOTAL + $NUMBER`
+            $FUNCNAME put $KEY $TOTAL
+        else
+            $FUNCNAME put $KEY $NUMBER
+        fi
+
+        return 0
     ;;
     *)
         echo unsupported operation $1; exit 1
     esac
 }
+
