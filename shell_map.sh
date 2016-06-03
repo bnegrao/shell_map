@@ -67,7 +67,7 @@ shell_map () {
         return 0
     ;;
     *)
-        echo unsupported operation $1; exit 1
+        return `croak "unsupported operation '$1'."`
     esac
 }
 
