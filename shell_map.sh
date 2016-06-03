@@ -34,7 +34,7 @@ shell_map () {
     ;;
     contains)
         local KEY="$2"
-        [ -z "$KEY" ] && return `croak "put() KEY cannot be empty."`
+        [ -z "$KEY" ] && return `croak "contains() KEY cannot be empty."`
         compgen -v ${FUNCNAME}_DATA_${KEY} > /dev/null && return 0 || return 1
     ;;
     clear_all)
@@ -43,7 +43,7 @@ shell_map () {
     ;;
     delete)
         local KEY="$2"
-        [ -z "$KEY" ] && return `croak "put() KEY cannot be empty."`
+        [ -z "$KEY" ] && return `croak "delete() KEY cannot be empty."`
         unset ${FUNCNAME}_DATA_${KEY}
     ;;
     size)
