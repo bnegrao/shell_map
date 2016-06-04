@@ -17,7 +17,7 @@ users put bnegrao "Bruno Negrao"
 users put msilva "Mariana Silva"
 
 # test if a key exists
-users contains msilva && echo "msilva's name is `users get msilva`" 
+users contains_key msilva && echo "msilva's name is `users get msilva`" 
 
 # retrieving values from keys. 
 users get jdavis      # returns "John Davis"
@@ -32,7 +32,7 @@ done
 - `new <name>`: instantiates a new shell_map instance named as <name>
 	
 #### Methods
-- `contains <key>`: returns true if the `<key>` exists in the map, returns false otherwise. 
+- `contains_key <key>`: returns true if the `<key>` exists in the map, returns false otherwise. 
 - `delete <key>`: deletes a key from the map. 
 - `get <key>`: retrieves the value associated with `<key>`
 - `keys`: retrieves a list of key names, separated by new line characters.
