@@ -32,9 +32,9 @@ shell_map () {
     name)
         echo $FUNCNAME
     ;;
-    contains)
+    contains_key)
         local KEY="$2"
-        [ -z "$KEY" ] && return `croak "contains() KEY cannot be empty."`
+        [ -z "$KEY" ] && return `croak "contains_key() KEY cannot be empty."`
         compgen -v ${FUNCNAME}_DATA_${KEY} > /dev/null && return 0 || return 1
     ;;
     clear_all)
@@ -56,7 +56,7 @@ shell_map () {
         [ -z "$NUMBER" ] && return `croak "put_increment() NUMBER cannot be empty."`
         echo $NUMBER | grep -qPo '[^0-9]' && return `croak "pub_increment() NUMBER '$NUMBER' must be digits."`
 
-        if `$FUNCNAME contains $KEY`; then
+        if `$FUNCNAME contains_key $KEY`; then
             local TOTAL=`$FUNCNAME get $KEY`
             TOTAL=`expr $TOTAL + $NUMBER`
             $FUNCNAME put $KEY $TOTAL

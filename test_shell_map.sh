@@ -22,9 +22,9 @@ map1 put Rodrigo "not hired"
 value="`map1 get Rodrigo`"
 [ -z "$value" ] || [ "$value" != "not hired" ] && die "get() test failed. get() should return 'not hired'." $LINENO
 
-# Testing contains()
-map1 contains Rodrigo || die "contains() test failed. Key 'Rodrigo' should exist." $LINENO
-map1 contains AADummy && die "contains() test failed. Key 'AADummy' should not exist." $LINENO
+# Testing contains_key()
+map1 contains_key Rodrigo || die "contains_key() test failed. Key 'Rodrigo' should exist." $LINENO
+map1 contains_key AADummy && die "contains_key() test failed. Key 'AADummy' should not exist." $LINENO
 
 # Testing size()
 shell_map new map2
@@ -41,7 +41,7 @@ keys="$(map2 keys)"
 
 # Testing delete()
 map2 delete 1
-map2 contains 1 && die "delete() test failed. the map should not contain key 1 at this point." $LINENO
+map2 contains_key 1 && die "delete() test failed. the map should not contain key 1 at this point." $LINENO
 [ `map2 size` == 2 ] || die "delete() test failed. the map size should be 2, but was `map2 size`." $LINENO 
 
 # Testing put_increment()
