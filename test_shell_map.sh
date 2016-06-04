@@ -39,10 +39,10 @@ map2 put 3 Fernando
 keys="$(map2 keys)"
 [ "$keys" != "1 2 3" ] || die "keys() test failed. keys should be '1 2 3'." $LINENO
 
-# Testing delete()
-map2 delete 1
-map2 contains_key 1 && die "delete() test failed. the map should not contain key 1 at this point." $LINENO
-[ `map2 size` == 2 ] || die "delete() test failed. the map size should be 2, but was `map2 size`." $LINENO 
+# Testing remove()
+map2 remove 1
+map2 contains_key 1 && die "remove() test failed. the map should not contain key 1 at this point." $LINENO
+[ `map2 size` == 2 ] || die "remove() test failed. the map size should be 2, but was `map2 size`." $LINENO 
 
 # Testing put_increment()
 shell_map new word_count

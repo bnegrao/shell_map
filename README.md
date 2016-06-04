@@ -33,7 +33,7 @@ done
 	
 #### Methods
 - `contains_key <key>`: returns true if the `<key>` exists in the map, returns false otherwise. 
-- `delete <key>`: deletes a key from the map. 
+- `remove <key>`: removes a key from the map. 
 - `get <key>`: retrieves the value associated with `<key>`
 - `keys`: retrieves a list of key names, separated by new line characters.
 - `put <key> <value>`: stores `<value>` associated with `<key>`. valid key name must be a string consisting solely of letters, numbers, and underscores.

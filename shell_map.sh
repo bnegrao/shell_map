@@ -41,9 +41,9 @@ shell_map () {
 
         echo "TODO clears all elements from this map"
     ;;
-    delete)
+    remove)
         local KEY="$2"
-        [ -z "$KEY" ] && return `croak "delete() KEY cannot be empty."`
+        [ -z "$KEY" ] && return `croak "remove() KEY cannot be empty."`
         unset ${FUNCNAME}_DATA_${KEY}
     ;;
     size)
