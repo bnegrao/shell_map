@@ -47,6 +47,6 @@ done
 - `get <key>`: retrieves the value associated with `<key>`
 - `keys`: retrieves a list of key names, separated by new line characters.
 - `put <key> <value>`: stores `<value>` associated with `<key>`. valid key name must be a string consisting solely of letters, numbers, and underscores.
-- `put_increment <key> <value>`: convenience method that stores a numeric `<value>` incrementing the existing number.
+- `put_increment <key> <value>`: convenience method that stores a numeric `<value>` incrementing the existing value.
 - `size`: return the number of keys contained in the map
 
