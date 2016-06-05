@@ -10,7 +10,7 @@ When you add data to your map using `my_map put "somekey" "somevalue"`, a variab
 
 When retrieving data with `my_map get somekey` the value from the global variable `my_map_DATA_somekey` will be returned, this way the resulting functionallity works pretty much like a HashMap.  
 
-Each method name is actually the "$1" argument given to shell_map function, methods arguments are the $2, $3...
+Each method name is actually the "$1" argument given to shell_map function, method arguments are the $2, $3...
 
 ```
 # Usage
