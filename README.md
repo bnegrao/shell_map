@@ -8,7 +8,9 @@ See the file [test_shell_map.sh](https://github.com/bnegrao/shell_map/blob/maste
 
 When you add data to your map using `my_map put "somekey" "somevalue"`, a variable will be added to the global scope under the name of `my_map_DATA_somekey`, for this reason, key strings can only be made of letters, digits and underscores.  
 
-When retrieving data with `my_map get somekey` the value from the global variable `my_map_DATA_somekey` will be returned, this way the resulting functionallity works pretty much like a HashMap.
+When retrieving data with `my_map get somekey` the value from the global variable `my_map_DATA_somekey` will be returned, this way the resulting functionallity works pretty much like a HashMap.  
+
+Each method name is actually the "$1" argument given to shell_map function, methods arguments are the $2, $3...
 
 ```
 # Usage
