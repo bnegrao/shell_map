@@ -6,7 +6,10 @@ carp () {
 }
 
 shell_map () {
-    case $1 in
+    local METHOD="$1"
+    [ -z "$METHOD" ] && return `carp "argument <METHOD> cannot be empty. Usage: shell_map <METHOD> [arg1] [arg2]."`
+    
+    case $METHOD in
     new)
         # loads function declaration
         test -n "$(declare -f shell_map)" || return
