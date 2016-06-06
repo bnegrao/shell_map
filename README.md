@@ -2,6 +2,7 @@
 A full featured Map implementation in bash script, providing de functionality of a HashMap.     
 Developed using bash 3.   
 See the file [test_shell_map.sh](https://github.com/bnegrao/shell_map/blob/master/test_shell_map.sh) for more usage examples.
+if you want to understand how shell_map is implemented, take a look at [IMPLEMENTATION_NOTES.md](https://github.com/bnegrao/shell_map/blob/master/IMPLEMENTATION_NOTES.md)
 
 ```
 # Usage
