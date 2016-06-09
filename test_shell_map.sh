@@ -57,6 +57,14 @@ word_count put_increment hello 1
 
 word_count put_increment hello asdf 2>/dev/null && die "put_increment should return error for a value that is not numeric." $LINENO
 
+# testing clear_all
+shell_map new map3
+map3 put var1 asdf
+map3 put var2 asdf
+map3 clear_all
+keys=`map3 keys`
+[ ! -z "$keys" ] && die "clear_all() did not clear all keys". $LINENO
+
 echo All tests were successful 
 
 exit 0
