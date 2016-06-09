@@ -9,9 +9,7 @@ shell_map () {
     local METHOD="$1"
     [ -z "$METHOD" ] && { carp "argument <METHOD> cannot be empty. Usage: shell_map <METHOD> [arg1] [arg2]." ; return; }
     
-    
     case $METHOD in
-    
     new)
         local NEW_MAP="$2"
         [ -z "$NEW_MAP" ] && { carp "new(): argument <MAP_NAME> cannot be empty. Usage: shell_map new <MAP_NAME>."; return; } 
