@@ -26,6 +26,10 @@ value="`map1 get Rodrigo`"
 map1 contains_key Rodrigo || die "contains_key() test failed. Key 'Rodrigo' should exist." $LINENO
 map1 contains_key AADummy && die "contains_key() test failed. Key 'AADummy' should not exist." $LINENO
 
+# test an invalid key name
+map1 put "tt%" string 2>/dev/null && die "put() should not accept key tt%"
+map1 put_increment "tt%" 5 2>/dev/null && die "put_increment() should not accept key tt%"
+
 # Testing size()
 shell_map new map2
 [ `map2 size` == 0 ] || die "size() test failed. size should be 0." $LINENO
