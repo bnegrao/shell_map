@@ -24,8 +24,8 @@ shell_map () {
     put)
         local KEY="$2"
         [ -z "$KEY" ] && { carp "put() KEY cannot be empty."; return; }
+        [[ "$KEY" =~ [^a-zA-Z0-9_] ]] && { carp "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."; return; } 
         
-        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && { carp "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."; return; } 
         local VALUE="$3"
         # declares a variable in the global scope
         eval ${FUNCNAME}_DATA_${KEY}='$VALUE'
@@ -60,10 +60,12 @@ shell_map () {
     ;;
     put_increment)
         local KEY="$2"
-        [ -z "$KEY" ] && { "put_increment() KEY cannot be empty."; return; }
+        [ -z "$KEY" ] && { carp "put_increment() KEY cannot be empty."; return; }
+        [[ "$KEY" =~ [^a-zA-Z0-9_] ]] && { carp "put_increment() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."; return; } 
+        
         local NUMBER="$3"
         [ -z "$NUMBER" ] && { carp "put_increment() NUMBER cannot be empty."; return; }
-        echo $NUMBER | grep -qPo '[^0-9]' && { carp "pub_increment() NUMBER '$NUMBER' must be digits."; return; }
+        [[ "$NUMBER" =~ [^0-9] ]] && { carp "pub_increment() NUMBER '$NUMBER' must be digits."; return; }
 
         if `$FUNCNAME contains_key $KEY`; then
             local TOTAL=`$FUNCNAME get $KEY`
