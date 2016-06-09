@@ -7,10 +7,15 @@ carp () {
 
 shell_map () {
     local METHOD="$1"
-    [ -z "$METHOD" ] && return `carp "argument <METHOD> cannot be empty. Usage: shell_map <METHOD> [arg1] [arg2]."`
+    [ -z "$METHOD" ] && { carp "argument <METHOD> cannot be empty. Usage: shell_map <METHOD> [arg1] [arg2]." ; return; }
+    
     
     case $METHOD in
+    
     new)
+        local NEW_MAP="$2"
+        [ -z "$NEW_MAP" ] && { carp "new(): argument <MAP_NAME> cannot be empty. Usage: shell_map new <MAP_NAME>."; return; } 
+        
         # loads function declaration
         test -n "$(declare -f shell_map)" || return
         # declares in the Global Scope a copy of this function with a new name.
@@ -18,8 +23,9 @@ shell_map () {
     ;;
     put)
         local KEY="$2"
-        [ -z "$KEY" ] && return `carp "put() KEY cannot be empty."`
-        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && return `carp "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."`
+        [ -z "$KEY" ] && { carp "put() KEY cannot be empty."; return; }
+        
+        echo "$KEY" | grep -qPo '[^a-zA-Z0-9_]' && { carp "put() KEY '$KEY' isn't valid. Valid KEY names can be letters, digits and underscores."; return; } 
         local VALUE="$3"
         # declares a variable in the global scope
         eval ${FUNCNAME}_DATA_${KEY}='$VALUE'
@@ -37,7 +43,7 @@ shell_map () {
     ;;
     contains_key)
         local KEY="$2"
-        [ -z "$KEY" ] && return `carp "contains_key() KEY cannot be empty."`
+        [ -z "$KEY" ] && { carp "contains_key() KEY cannot be empty."; return; }
         compgen -v ${FUNCNAME}_DATA_${KEY} > /dev/null && return 0 || return 1
     ;;
     clear_all)
@@ -46,7 +52,7 @@ shell_map () {
     ;;
     remove)
         local KEY="$2"
-        [ -z "$KEY" ] && return `carp "remove() KEY cannot be empty."`
+        [ -z "$KEY" ] && { carp "remove() KEY cannot be empty."; return; }
         unset ${FUNCNAME}_DATA_${KEY}
     ;;
     size)
@@ -54,10 +60,10 @@ shell_map () {
     ;;
     put_increment)
         local KEY="$2"
-        [ -z "$KEY" ] && return `carp "put_increment() KEY cannot be empty."`
+        [ -z "$KEY" ] && { "put_increment() KEY cannot be empty."; return; }
         local NUMBER="$3"
-        [ -z "$NUMBER" ] && return `carp "put_increment() NUMBER cannot be empty."`
-        echo $NUMBER | grep -qPo '[^0-9]' && return `carp "pub_increment() NUMBER '$NUMBER' must be digits."`
+        [ -z "$NUMBER" ] && { carp "put_increment() NUMBER cannot be empty."; return; }
+        echo $NUMBER | grep -qPo '[^0-9]' && { carp "pub_increment() NUMBER '$NUMBER' must be digits."; return; }
 
         if `$FUNCNAME contains_key $KEY`; then
             local TOTAL=`$FUNCNAME get $KEY`
@@ -70,7 +76,8 @@ shell_map () {
         return 0
     ;;
     *)
-        return `carp "unsupported operation '$1'."`
+        carp "unsupported operation '$1'."
+        return 1
+    ;;
     esac
 }
-
