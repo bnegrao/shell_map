@@ -31,7 +31,7 @@ shell_map () {
     get)
         local KEY="$2"
         local VALUE="${FUNCNAME}_DATA_${KEY}"
-        echo "${!VALUE}"
+        printf '%s' "${!VALUE}"
     ;;
     keys)
         declare | grep -Po "(?<=${FUNCNAME}_DATA_)\w+((?=\=))"
