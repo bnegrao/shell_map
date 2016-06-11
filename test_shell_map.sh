@@ -41,7 +41,7 @@ map2 put 3 Fernando
 
 # Testing keys()
 keys="$(map2 keys)"
-[ "$keys" != "1 2 3" ] || die "keys() test failed. keys should be '1 2 3'." $LINENO
+[ "$keys" != "1 2 3" ] && die "keys() test failed. keys should be '1 2 3'." $LINENO
 
 # Testing remove()
 map2 remove 1
