@@ -53,9 +53,16 @@ shell_map new word_count
 word_count put_increment hello 1
 word_count put_increment hello 1
 word_count put_increment hello 1
-[ `word_count get hello` == 3 ] || die "put_increment test failed. key 'hello' should have value '3'." $LINENO
+[ `word_count get hello` == 3 ] || die "put_increment() test failed. key 'hello' should have value '3'." $LINENO
 
 word_count put_increment hello asdf 2>/dev/null && die "put_increment should return error for a value that is not numeric." $LINENO
+
+# testing put_append()
+shell_map new string_map
+string_map put_append str bruno
+string_map put_append str daniel
+mystr=`string_map get str`
+[ "$mystr" == "brunodaniel" ] || die "put_append() test failed. mystr should be 'brunodaniel' but is '$mystr'." $LINENO
 
 # testing clear_all
 shell_map new map3
