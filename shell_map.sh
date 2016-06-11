@@ -77,11 +77,10 @@ shell_map () {
         local OLD_VALUE=""
         if $FUNCNAME contains_key $KEY ; then
             REF="${FUNCNAME}_DATA_${KEY}"
-            OLD_VALUE="${!VALUE}"
+            OLD_VALUE="${!REF}"
         fi
         
         $FUNCNAME put $KEY "$OLD_VALUE$VALUE"
-        return 0
     ;;
     *)
         carp "unsupported operation '$1'."
