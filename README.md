@@ -37,10 +37,12 @@ done
 - `new <name>`: instantiates a new shell_map instance named as <name>
 	
 #### Methods
+- `clear_all`: remove all the key value pairs from the map
 - `contains_key <key>`: returns true if the `<key>` exists in the map, returns false otherwise. 
-- `remove <key>`: removes a key from the map. 
 - `get <key>`: retrieves the value associated with `<key>`
 - `keys`: retrieves a list of key names, separated by new line characters.
 - `put <key> <value>`: stores `<value>` associated with `<key>`. valid key name must be a string consisting solely of letters, numbers, and underscores.
+- `put_append <key> <value>`: convenience method that appends `<value>` to an existing key value. Creates a new key if it didn't exist.
 - `put_increment <key> <value>`: convenience method that stores a numeric `<value>` incrementing the existing value.
+- `remove <key>`: removes a key from the map. 
 - `size`: return the number of keys contained in the map
