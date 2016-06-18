@@ -40,8 +40,8 @@ map2 put 3 Fernando
 [ `map2 size` -eq 3 ] || die "size() test failed. size should be 3." $LINENO
 
 # Testing keys()
-keys="$(map2 keys)"
-[ "$keys" != "1 2 3" ] && die "keys() test failed. keys should be '1 2 3'." $LINENO
+keys="$(map2 keys|tr '\n' '\0')"
+[ "$keys" != "123" ] && die "keys() test failed. keys should be '1 2 3'." $LINENO
 
 # Testing remove()
 map2 remove 1
