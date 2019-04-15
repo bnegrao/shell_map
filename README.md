@@ -34,7 +34,7 @@ for username in `users keys`; do
 done
 ```
 #### Constructor
-- `new <mymap>`: instantiates a new shell_map instance named as `<mymap>`
+- `new <mymap>`: instantiates a new shell_map instance named `<mymap>`
 	
 #### Methods
 - `clear_all`: remove all the key value pairs from the map
