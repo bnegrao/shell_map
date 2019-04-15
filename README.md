@@ -21,11 +21,11 @@ users put jdavis "John Davis"
 users put bnegrao "Bruno Negrao" 
 users put msilva "Mariana Silva"
 
+# retrieving values from the map 
+users get jdavis      # returns "John Davis"
+
 # test if a key exists
 users contains_key msilva && echo "msilva's name is `users get msilva`" 
-
-# retrieving values from keys. 
-users get jdavis      # returns "John Davis"
 
 # iterating through all keys in 'users' shell_map 
 for username in `users keys`; do
